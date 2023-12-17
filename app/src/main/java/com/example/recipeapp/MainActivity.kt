@@ -5,7 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +16,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -46,20 +50,32 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier.padding(16.dp)
                     ) {
-                        Text(
-                            text = item.name,
-                            style = TextStyle(fontSize = 26.sp)
-                        )
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = item.name,
+                                style = TextStyle(fontSize = 26.sp),
+                            )
+                            Text(
+                                text = item.price,
+                                style = TextStyle(color = Color.Green, fontSize = 16.sp),
+                                modifier = Modifier.align(Alignment.CenterVertically)
+                            )
+                        }
                         Spacer(modifier = Modifier.padding(10.dp))
                         Text(
                             text = item.calories,
                             style = TextStyle(fontSize = 17.sp)
                         )
                         Spacer(modifier = Modifier.padding(10.dp))
-                        Text(
-                            text = item.price,
-                            style = TextStyle(color = Color.Green, fontSize = 16.sp)
-                        )
+                        Button(
+                            onClick = {},
+                            modifier = Modifier.align(Alignment.CenterHorizontally)
+                        ) {
+                            Text(text = "Order Now")
+                        }
                     }
                 }
             }
