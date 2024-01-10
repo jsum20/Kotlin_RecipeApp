@@ -2,42 +2,37 @@ package com.example.recipeapp.network.model
 
 import com.google.gson.annotations.SerializedName
 
-class RecipeNetworkEntity {
-
+class RecipeNetworkEntity (
     @SerializedName("pk")
-    var pk: Int? = null
+    var pk: Int? = null,
 
     @SerializedName("title")
-    var title: String? = null
+    var title: String? = null,
 
     @SerializedName("publisher")
-    var publisher: String? = null
+    var publisher: String? = null,
 
     @SerializedName("featured_image")
-    var featuredImage: String? = null
+    var featuredImage: String? = null,
 
     @SerializedName("rating")
-    var rating: Int? = null
+    var rating: Int? = null,
 
     @SerializedName("source_url")
-    var sourceUrl: String? = null
+    var sourceUrl: String? = null,
 
     @SerializedName("description")
-    var description: String? = null
+    var description: String? = null,
 
     @SerializedName("cooking_instructions")
-    var cookingInstructions: String? = null
+    var cookingInstructions: String? = null,
 
     @SerializedName("ingredients")
-    var ingredients: List<String> = listOf()
+    var ingredients: List<String>? = null,
 
     @SerializedName("date_added")
-    var dateAdded: String? = null
+    var dateAdded: String? = null,
 
     @SerializedName("date_updated")
     var dateUpdated: String? = null
-
-    override fun toString(): String {
-        return "RecipeNetworkEntity(pk=$pk, title=$title, publisher=$publisher, featuredImage=$featuredImage, rating=$rating, sourceUrl=$sourceUrl, description=$description, cookingInstructions=$cookingInstructions, ingredients=$ingredients, dateAdded=$dateAdded, dateUpdated=$dateUpdated)"
-    }
-}
+)
