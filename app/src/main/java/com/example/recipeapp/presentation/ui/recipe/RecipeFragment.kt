@@ -1,24 +1,31 @@
-package com.example.recipeapp
+package com.example.recipeapp.presentation.ui.recipe
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.Fragment;
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.recipeapp.presentation.ui.recipe_list.RecipeListViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+class RecipeFragment : Fragment() {
 
-class RecipeListFragment : Fragment() {
+    private val viewModel: RecipeListViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        println("RecipeListFragment: $viewModel")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,19 +36,11 @@ class RecipeListFragment : Fragment() {
             setContent {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "Recipe List Fragment!",
+                        text = "Recipes",
                         style = TextStyle(
                             fontSize = 21.sp
                         )
                     )
-                    Spacer(modifier = Modifier.padding(10.dp))
-                    Button(
-                        onClick = {
-                            findNavController().navigate(R.id.viewRecipe)
-                        }
-                    ) {
-                        Text(text = "To Recipes")
-                    }
                 }
             }
         }
