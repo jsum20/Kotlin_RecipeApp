@@ -23,6 +23,12 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RecipeListFragment : Fragment() {
+
+    private val viewModel: RecipeListViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        println("RecipeListFragment: ${viewModel.getToken()}")
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
