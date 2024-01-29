@@ -34,7 +34,7 @@ fun loadPicture(url: String, @DrawableRes defaultImage: Int) : MutableState<Bitm
             }
 
             override fun onLoadCleared(placeholder: Drawable?) {
-                TODO("Not yet implemented")
+                // Not used
             }
         })
 

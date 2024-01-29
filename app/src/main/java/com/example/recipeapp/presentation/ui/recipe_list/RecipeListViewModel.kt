@@ -1,5 +1,6 @@
 package com.example.recipeapp.presentation.ui.recipe_list
 
+import androidx.compose.foundation.ScrollState
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -20,7 +21,9 @@ constructor(
 ): ViewModel() {
     val recipes: MutableState<List<Recipe>> = mutableStateOf(listOf())
     val query = mutableStateOf("")
-    private var categoryScrollPosition: Int = 0
+    val selectedCategory: MutableState<FoodCategory?> = mutableStateOf(null)
+    var categoryScrollPosition: Int = 0
+
     init {
         newSearch(query.value)
     }
@@ -41,5 +44,19 @@ constructor(
 
     fun onChangeCategoryScrollPosition(position: Int) {
         categoryScrollPosition = position
+    }
+
+    fun onSelectedCategoryChanged(category: String) {
+        val newCategory = getFoodCategory(category)
+
+        if (selectedCategory.value == newCategory) {
+            selectedCategory.value = null
+            onQueryChanged("")
+            newSearch("")
+        } else {
+            selectedCategory.value = newCategory
+            onQueryChanged(category)
+            newSearch(category)
+        }
     }
 }
