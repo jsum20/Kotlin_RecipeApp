@@ -30,7 +30,15 @@ fun FoodCategoryChip(category: String, selected: Boolean, onSelect: (String) -> 
         onClick = {
                     onSelect(category)
                   },
-        label = { Text(text = category) },
+        colors = FilterChipDefaults.elevatedFilterChipColors(
+            selectedContainerColor = Color.LightGray
+        ),
+        elevation = FilterChipDefaults.elevatedFilterChipElevation(
+            defaultElevation = 2.dp,
+            pressedElevation = 4.dp,
+            focusedElevation = 4.dp
+        ),
+        label = { Text(text = category, color = Color.Black) },
         modifier = Modifier.padding(end = 8.dp),
         leadingIcon = if (selected) {
             {
