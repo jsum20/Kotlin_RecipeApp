@@ -22,21 +22,21 @@ fun loadPicture(url: String, @DrawableRes defaultImage: Int) : MutableState<Bitm
         mutableStateOf<Bitmap?>(null)
     }
 
-    Glide.with(LocalContext.current)
-        .asBitmap()
-        .load(defaultImage)
-        .into(object : CustomTarget<Bitmap>() {
-            override fun onResourceReady(
-                resource: Bitmap,
-                transition: Transition<in Bitmap>?
-            ) {
-                bitmapState.value = resource
-            }
-
-            override fun onLoadCleared(placeholder: Drawable?) {
-                // Not used
-            }
-        })
+//    Glide.with(LocalContext.current)
+//        .asBitmap()
+//        .load(defaultImage)
+//        .into(object : CustomTarget<Bitmap>() {
+//            override fun onResourceReady(
+//                resource: Bitmap,
+//                transition: Transition<in Bitmap>?
+//            ) {
+//                bitmapState.value = resource
+//            }
+//
+//            override fun onLoadCleared(placeholder: Drawable?) {
+//                // Not used
+//            }
+//        })
 
     Glide.with(LocalContext.current)
         .asBitmap()
@@ -50,7 +50,7 @@ fun loadPicture(url: String, @DrawableRes defaultImage: Int) : MutableState<Bitm
             }
 
             override fun onLoadCleared(placeholder: Drawable?) {
-                TODO("Not yet implemented")
+                // Not used
             }
         })
 

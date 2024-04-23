@@ -20,8 +20,10 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.viewModels
 import com.example.recipeapp.presentation.components.CircularProgressBar
+import com.example.recipeapp.presentation.components.PulseAnimation
 import com.example.recipeapp.presentation.components.RecipeCard
 import com.example.recipeapp.presentation.components.SearchAppBar
+import com.example.recipeapp.presentation.components.heartAnimation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,6 +59,8 @@ class RecipeListFragment : Fragment() {
                         scrollState = scrollState,
                         onSelectedCategoryChanged = viewModel::onSelectedCategoryChanged,
                     )
+
+//                    heartAnimation()
 
                     Box(
                         modifier = Modifier.fillMaxSize()
