@@ -34,7 +34,7 @@ fun SearchAppBar(
     onQueryChanged: (String) -> Unit,
     onExecuteSearch: () -> Unit,
     categories: List<FoodCategory>,
-    onChangeCategoryScrollPosition: (Float) -> Unit,
+    onChangeCategoryScrollPosition: (Int) -> Unit,
     selectedCategory: FoodCategory?,
     scrollState: ScrollState,
     onSelectedCategoryChanged: (String) -> Unit,
@@ -91,7 +91,7 @@ fun SearchAppBar(
                         category = category.value,
                         selected = selectedCategory == category,
                         onSelectedCategoryChanged = {
-                            onChangeCategoryScrollPosition(scrollState.value.toFloat())
+                            onChangeCategoryScrollPosition(scrollState.value)
                             onSelectedCategoryChanged(it)
                         },
                         onExecuteSearch = {
