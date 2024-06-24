@@ -91,4 +91,7 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // material
+    implementation("androidx.compose.material3:material3:1.0.0-alpha13")
 }

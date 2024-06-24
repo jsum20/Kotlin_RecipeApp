@@ -1,7 +1,6 @@
 package com.example.recipeapp.presentation.components
 
 import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,22 +19,22 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.recipeapp.presentation.ui.recipe_list.FoodCategory
-import com.example.recipeapp.presentation.ui.recipe_list.getAllFoodCategories
+import kotlin.reflect.KSuspendFunction1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchAppBar(
     query: String,
     onQueryChanged: (String) -> Unit,
-    newSearch: (String) -> Unit,
-    onChangeCategoryScrollPosition: (Int) -> Unit,
+    onExecuteSearch: () -> Unit,
+    categories: List<FoodCategory>,
+    onChangeCategoryScrollPosition: (Float) -> Unit,
     selectedCategory: FoodCategory?,
     scrollState: ScrollState,
     onSelectedCategoryChanged: (String) -> Unit,
@@ -43,7 +42,6 @@ fun SearchAppBar(
     val keyboardController = LocalSoftwareKeyboardController.current
     Surface(
         modifier = Modifier.fillMaxWidth(),
-        color = Color.White,
         tonalElevation = 8.dp,
     ) {
         Column {
@@ -52,7 +50,6 @@ fun SearchAppBar(
             ) {
                 Box(
                     modifier = Modifier
-                        .background(MaterialTheme.colorScheme.surface)
                         .fillMaxWidth()
                 ) {
                     TextField(
@@ -80,23 +77,26 @@ fun SearchAppBar(
                         },
                         keyboardActions = KeyboardActions(
                             onSearch = {
-                                newSearch(query)
+                                onExecuteSearch()
                                 keyboardController?.hide()
                             }
                         ),
-                        textStyle = TextStyle(color = MaterialTheme.colorScheme.onSurface),
+                        textStyle = TextStyle(color = MaterialTheme.colorScheme.onPrimary),
                     )
                 }
             }
             Row(modifier = Modifier.horizontalScroll(scrollState)) {
-                for (category in getAllFoodCategories()) {
+                for (category in categories) {
                     FoodCategoryChip(
                         category = category.value,
                         selected = selectedCategory == category,
-                        onSelect = {
+                        onSelectedCategoryChanged = {
+                            onChangeCategoryScrollPosition(scrollState.value.toFloat())
                             onSelectedCategoryChanged(it)
-                            onChangeCategoryScrollPosition(scrollState.value)
-                        }
+                        },
+                        onExecuteSearch = {
+                            onExecuteSearch()
+                        },
                     )
                 }
             }

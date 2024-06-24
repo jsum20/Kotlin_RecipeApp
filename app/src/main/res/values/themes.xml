@@ -2,8 +2,7 @@
 <resources>
 
     <style name="Theme.RecipeApp" parent="Theme.AppCompat.Light" >
-        <item name="android:colorPrimary">@color/yellow</item>
-        <item name="android:colorPrimaryDark">@color/white</item>
-        <item name="android:colorAccent">@color/brown</item>
+
+        <item name="android:statusBarColor">@color/primary100</item>
     </style>
 </resources>
