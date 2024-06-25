@@ -31,9 +31,11 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.example.recipeapp.presentation.components.CircularProgressBar
 import com.example.recipeapp.presentation.components.LoadingRecipeListShimmer
 import com.example.recipeapp.presentation.components.RecipeCard
+import com.example.recipeapp.presentation.components.RecipeList
 import com.example.recipeapp.presentation.components.SearchAppBar
 import com.example.recipeapp.ui.theme.RecipeAppTheme
 import com.example.recipeapp.presentation.components.util.SnackbarController
@@ -102,37 +104,20 @@ class RecipeListFragment : Fragment() {
                         snackbarHost = {
                             SnackbarHost(hostState = snackbarHostState)
                         }
-                    ){
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(it)
-                                .background(color = MaterialTheme.colorScheme.background)
-                        ) {
-                            if (loading && recipes.isEmpty()) {
-                                LoadingRecipeListShimmer(imageHeight = 250.dp)
-                            } else {
-                                LazyColumn {
-                                    itemsIndexed(
-                                        items = recipes
-                                    ) { index, recipe ->
-                                        viewModel.changeRecipeScrollPosition(index)
-                                        if ((index + 1) >= (page * PAGE_SIZE) && !loading) {
-                                            viewModel.onTriggerEvent(NextPageEvent)
-                                        }
-                                        RecipeCard(recipe = recipe, onClick = {})
-                                    }
-                                }
-                            }
-                            CircularProgressBar(isDisplayed = loading)
-                            DefaultSnackbar(
-                                snackbarHostState = snackbarHostState,
-                                onDismiss = {
-                                snackbarHostState.currentSnackbarData?.dismiss()
-                                },
-                                modifier = Modifier.align(Alignment.BottomCenter)
-                            )
-                        }
+                    ) {
+                        RecipeList(
+                            loading = loading,
+                            paddingValues = it,
+                            recipes = recipes,
+                            changeRecipeScrollPosition = viewModel::changeRecipeScrollPosition ,
+                            page = page,
+                            onNextPage = {
+                                viewModel.onTriggerEvent(NextPageEvent)
+                            },
+                            snackbarHostState = snackbarHostState,
+                            snackbarController = snackbarController,
+                            navController = findNavController()
+                        )
                     }
                 }
             }
