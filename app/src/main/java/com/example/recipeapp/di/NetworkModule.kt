@@ -1,6 +1,6 @@
 package com.example.recipeapp.di
 
-import com.example.recipeapp.network.RecipeService
+import com.example.recipeapp.network.RetrofitService
 import com.example.recipeapp.network.model.RecipeDtoMapper
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -24,12 +24,12 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRecipeService(): RecipeService {
+    fun provideRecipeService(): RetrofitService {
         return Retrofit.Builder()
             .baseUrl("https://food2fork.ca/api/recipe/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
-            .create(RecipeService::class.java)
+            .create(RetrofitService::class.java)
     }
 
     @Singleton

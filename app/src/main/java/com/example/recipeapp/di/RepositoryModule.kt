@@ -1,6 +1,6 @@
 package com.example.recipeapp.di
 
-import com.example.recipeapp.network.RecipeService
+import com.example.recipeapp.network.RetrofitService
 import com.example.recipeapp.network.model.RecipeDtoMapper
 import com.example.recipeapp.repository.RecipeRepository
 import com.example.recipeapp.repository.RecipeRepositoryImpl
@@ -16,9 +16,9 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideRecipeRepository(
-        recipeService: RecipeService,
+        retrofitService: RetrofitService,
         recipeDtoMapper: RecipeDtoMapper
     ): RecipeRepository {
-        return RecipeRepositoryImpl(recipeService, recipeDtoMapper)
+        return RecipeRepositoryImpl(retrofitService, recipeDtoMapper)
     }
 }
