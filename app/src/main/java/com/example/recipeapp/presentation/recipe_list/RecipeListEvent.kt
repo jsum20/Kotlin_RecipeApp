@@ -1,4 +1,4 @@
-package com.example.recipeapp.presentation.ui.recipe_list
+package com.example.recipeapp.presentation.recipe_list
 
 sealed class RecipeListEvent {
 

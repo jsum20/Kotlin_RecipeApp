@@ -4,8 +4,13 @@ import com.example.recipeapp.domain.model.Recipe
 
 interface RecipeRepository {
 
-    suspend fun search(token: String, page: Int, query: String): List<Recipe>
+    suspend fun searchRecipes(
+        token: String,
+        query: String,
+        page: Int,
+        pageSize: Int
+    ): List<Recipe>
 
-    suspend fun get(token: String, id: Int): Recipe
+    suspend fun getRecipe(token: String, id: Int): Recipe
 
 }

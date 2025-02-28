@@ -9,12 +9,17 @@ class RecipeRepositoryImpl(
     private val mapper: RecipeDtoMapper
 ) : RecipeRepository {
 
-    override suspend fun search(token: String, page: Int, query: String): List<Recipe> {
+    override suspend fun searchRecipes(
+        token: String,
+        query: String,
+        page: Int,
+        pageSize: Int
+    ): List<Recipe> {
         val result = retrofitService.search(token = token, page = page, query = query).recipes
         return mapper.toDomainList(result)
     }
 
-    override suspend fun get(token: String, id: Int): Recipe {
+    override suspend fun getRecipe(token: String, id: Int): Recipe {
         return mapper.mapToDomainModel(retrofitService.get(token = token, id = id))
     }
 }

@@ -1,4 +1,4 @@
-package com.example.recipeapp.presentation.ui.recipe
+package com.example.recipeapp.presentation.recipe
 
 sealed class RecipeEvent {
     data class GetRecipeEvent(

@@ -1,51 +1,69 @@
 package com.example.recipeapp.presentation.components
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.ElevatedFilterChip
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.recipeapp.domain.model.FoodCategory
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FoodCategoryChip(
-    category: String,
-    selected: Boolean = false,
-    onSelectedCategoryChanged: (String) -> Unit,
+    category: FoodCategory,
+    selected: Boolean,
+    onSelected: (FoodCategory) -> Unit,
     onExecuteSearch: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    Surface(
-        modifier = Modifier.padding(end = 8.dp),
-        tonalElevation = if (selected) 8.dp else 0.dp,
-        shape = MaterialTheme.shapes.medium,
-        color = if(selected) Color.LightGray else MaterialTheme.colorScheme.primary
-    ) {
-        Row(
-            modifier = Modifier
-                .clickable {
-                    onSelectedCategoryChanged(category)
-                    onExecuteSearch()
-                }
-                .padding(8.dp)
-        ) {
+    ElevatedFilterChip(
+        selected = selected,
+        onClick = {
+            onSelected(category)
+            onExecuteSearch()
+        },
+        label = {
             Text(
-                text = category,
-                style = MaterialTheme.typography.bodyMedium,
-                color = Color.White,
-                modifier = Modifier.padding(8.dp)
+                text = category.displayName,
+                style = MaterialTheme.typography.labelMedium
             )
-        }
-    }
+        },
+        leadingIcon = {
+            if (selected) {
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = "Selected",
+                    modifier = Modifier.size(FilterChipDefaults.IconSize)
+                )
+            }
+        },
+        colors = FilterChipDefaults.filterChipColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+            labelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+            selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            iconColor = MaterialTheme.colorScheme.onPrimaryContainer
+        ),
+        border = FilterChipDefaults.filterChipBorder(
+            borderColor = MaterialTheme.colorScheme.outline,
+            selectedBorderColor = MaterialTheme.colorScheme.primary,
+            disabledBorderColor = Color.Transparent,
+            disabledSelectedBorderColor = Color.Transparent,
+            borderWidth = 1.dp,
+            selectedBorderWidth = 1.5.dp,
+            enabled = true,
+            selected = true
+        ),
+        elevation = FilterChipDefaults.elevatedFilterChipElevation(
+            elevation = 2.dp
+        ),
+        modifier = modifier.padding(end = 8.dp)
+    )
 }

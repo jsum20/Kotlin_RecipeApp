@@ -49,7 +49,7 @@ fun RecipeView(
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                recipe.title?.let { title ->
+                recipe.title.let { title ->
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()

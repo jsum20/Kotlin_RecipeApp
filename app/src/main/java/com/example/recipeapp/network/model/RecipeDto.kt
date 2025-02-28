@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName
 
 data class RecipeDto (
     @SerializedName("pk")
-    var pk: Int? = null,
+    var pk: Int,
 
     @SerializedName("title")
-    var title: String? = null,
+    var title: String,
 
     @SerializedName("publisher")
     var publisher: String? = null,
@@ -22,7 +22,7 @@ data class RecipeDto (
     var sourceUrl: String? = null,
 
     @SerializedName("description")
-    var description: String? = null,
+    var description: String,
 
     @SerializedName("cooking_instructions")
     var cookingInstructions: String? = null,
