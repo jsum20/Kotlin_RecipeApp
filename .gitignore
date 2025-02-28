@@ -1,20 +1,39 @@
-*.iml
-.gradle
-/local.properties
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+# Gradle files
+.gradle/
+build/
+!gradle-wrapper.jar
 
-# Ignore the entire .idea directory
+# Local configuration file (e.g., Android Studio)
+.local/
 .idea/
+*.iml
 
-# But do not ignore these files
-!.idea/modules.xml
-!.idea/misc.xml
-!.idea/vcs.xml
-!.idea/jsLibraryMappings.xml
-!.idea/compiler.xml
-!.idea/runConfigurations/PythonTests.xml
+# User-specific files (e.g., project-specific settings)
+*.log
+*.class
+*.jar
+
+# Android Studio cache and build files
+/captures/
+
+# Android build folder
+/build/
+
+# Android specific - Gradle wrapper
+gradle-wrapper.jar
+
+# Kotlin/Java specific
+out/
+
+# Intellij specific files
+.idea/
+*.iml
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+
+# Sensitive files (e.g., environment variables, API keys)
+*.env
