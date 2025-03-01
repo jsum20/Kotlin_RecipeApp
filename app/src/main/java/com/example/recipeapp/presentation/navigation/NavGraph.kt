@@ -30,7 +30,7 @@ fun RecipeNavGraph() {
             route = Screen.RecipeDetail.route,
             arguments = listOf(navArgument("recipeId") { type = NavType.IntType })
         ) {
-            RecipeDetailsScreen()
+            RecipeDetailsScreen(navController)
         }
     }
 }

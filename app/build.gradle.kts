@@ -82,9 +82,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    // Glide
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-
     // Coil
     implementation("io.coil-kt:coil-compose:2.4.0")
 }
