@@ -1,4 +1,5 @@
-import android.util.Log
+package com.example.recipeapp.presentation.recipe_list
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,11 +14,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.recipeapp.domain.model.Recipe
 import com.example.recipeapp.presentation.components.SearchAppBar
-import com.example.recipeapp.presentation.recipe_list.RecipeListViewModel
 import com.example.recipeapp.util.RecipeImage
 
 @Composable
@@ -49,7 +49,6 @@ fun RecipeListScreen(
             items(pagingItems.itemCount) { index ->
                 val recipe = pagingItems[index]
                 recipe?.let {
-                    Log.d("RecipeListScreen", "Displaying recipe: ${recipe.title}")
                     RecipeItem(
                         recipe = it,
                         onClick = { onRecipeClick(it.id) }
@@ -57,7 +56,6 @@ fun RecipeListScreen(
                 }
             }
         }
-
     }
 }
 

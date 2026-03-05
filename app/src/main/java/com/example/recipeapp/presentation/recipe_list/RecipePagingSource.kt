@@ -25,8 +25,6 @@ class RecipePagingSource(
                 pageSize = pageSize
             )
 
-            Log.d("RecipePagingSource", "$result")
-
             LoadResult.Page(
                 data = result,
                 prevKey = if (pageNumber == 1) null else pageNumber - 1,

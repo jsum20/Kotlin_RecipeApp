@@ -10,5 +10,4 @@ data class RecipeSearchResponse(
 
     @SerializedName("results")
     var recipes: List<RecipeDto>
-
 )

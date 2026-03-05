@@ -1,0 +1,30 @@
+{
+  "count": 1,
+  "results": [
+    {
+      "pk": 583,
+      "title": "Pizza Potato Skins",
+      "publisher": "mitch",
+      "featured_image": "https://nyc3.digitaloceanspaces.com/food2fork/food2fork-static/featured_images/583/featured_image.png",
+      "rating": 16,
+      "source_url": "http://thepioneerwoman.com/cooking/2013/04/pizza-potato-skins/",
+      "description": "N/A",
+      "cooking_instructions": null,
+      "ingredients": [
+        "Canola Oil",
+        "Kosher Salt",
+        "Butter, Melted",
+        "Diced Pepperoni",
+        "Minced Fresh Parsley",
+        "Grated Mozzarella Cheese",
+        "8 whole Small Russet Potatoes",
+        "Jarred Marinara Or Pizza Sauce",
+        "Miscellaneous Pizza Toppings: Cooked Sausage, Cooked Hamburger, Diced Bell Pepper, Diced Onion, Diced Mushrooms, Diced Canadian Bacon, Etc."
+      ],
+      "date_added": "November 11 2020",
+      "date_updated": "November 11 2020",
+      "long_date_added": 1606349126,
+      "long_date_updated": 1606349126
+    }
+  ]
+}

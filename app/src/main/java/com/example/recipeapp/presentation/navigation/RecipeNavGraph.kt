@@ -1,6 +1,6 @@
 package com.example.recipeapp.presentation.navigation
 
-import RecipeListScreen
+import com.example.recipeapp.presentation.recipe_list.RecipeListScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
